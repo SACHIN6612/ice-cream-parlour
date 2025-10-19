@@ -1,0 +1,646 @@
+/* 1. Global Setup */
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ---------- Header ---------- */
+header {
+  background: crimson;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline hover animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #ffe6f0;
+}
+
+/* Order Now Button */
+.btn {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  box-shadow: 0 6px 14px rgba(255, 105, 180, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ---------- Responsive Header ---------- */
+@media (max-width: 850px) {
+  header {
+    flex-direction: column;
+    padding: 15px 25px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }
+}
+
+/* 2. Hero Section Container */
+.hero-section {
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* background image Fixed after scrolling */
+  height: 500px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1); /* 10% काला ओवरले */
+}
+
+/* 3. Content Styling */
+.hero-content {
+  padding: 100px;
+}
+
+/* Main Heading (Happiness in Every Scoop) */
+.main-heading {
+  font-size: 5vw; /* स्क्रीन साइज़ के साथ स्केल होता है */
+  font-weight: 800;
+  margin-bottom: 10px;
+
+  /* टेक्स्ट को आइसक्रीम की पृष्ठभूमि पर स्पष्ट रूप से दिखाने के लिए शैडो */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Sub Text and Link Container */
+.sub-text {
+  font-size: 1.5vw;
+  font-weight: 500;
+  margin-top: 0;
+
+  /* शैडो यहाँ भी लागू होती है */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Explore Menu Link/Button */
+.menu-link {
+  color: #8cceff; /* लिंक का रंग (हल्का नीला) */
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 15px;
+  padding: 5px 10px;
+  border: 1px solid #8cceff;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-link:hover {
+  background-color: #8cceff; /* होवर पर पृष्ठभूमि भरता है */
+  color: #000000; /* होवर पर टेक्स्ट को काला करता है */
+}
+
+/* 4. Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh; /* मोबाइल पर थोड़ी कम ऊँचाई */
+  }
+
+  .main-heading {
+    font-size: 8vw; /* मोबाइल पर बड़ा फ़ॉन्ट */
+  }
+
+  .sub-text {
+    font-size: 3.5vw; /* मोबाइल पर बड़ा सबटेक्स्ट फ़ॉन्ट */
+    display: flex; /* sub-text और link को एडजस्ट करने के लिए */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-link {
+    margin-top: 15px; /* बटन के ऊपर गैप */
+    margin-left: 0;
+    padding: 8px 20px;
+  }
+}
+
+/* 1. Section Setup */
+.about-section {
+  background-color: cornsilk;
+  padding: 80px 20px;
+}
+
+.about-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  gap: 40px;
+}
+
+/* 2. Image Styling (Left Column) */
+.about-image-wrapper {
+  flex: 1;
+  max-width: 50%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 3. Content Styling (Right Column) */
+.about-content {
+  flex: 1; /* उपलब्ध जगह का लगभग 50% लेता है */
+  max-width: 50%;
+  color: #333333;
+}
+
+.about-title {
+  /* गहरे गुलाबी/लाल रंग का उपयोग (स्ट्रॉबेरी/रसभरी जैसा) */
+  color: #e91e63;
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* 4. Button Styling */
+.more-info-button {
+  display: inline-block;
+  padding: 10px 25px;
+  /* बटन के लिए नीला रंग */
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.more-info-button:hover {
+  background-color: #0056b3;
+}
+
+/* 5. Responsive Adjustment */
+@media (max-width: 850px) {
+  .about-container {
+    flex-direction: column; /* मोबाइल पर कॉलम में स्टैक करता है */
+    gap: 30px;
+  }
+
+  .about-image-wrapper,
+  .about-content {
+    max-width: 100%; /* पूरी चौड़ाई लेता है */
+    text-align: center;
+  }
+
+  .about-title {
+    text-align: center;
+  }
+}
+
+/* 1. Section Setup */
+.menu-section {
+  background-color: aquamarine;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  color: #007bff;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* 2. Menu Container - Grid Layout */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 3. Individual Card Styling */
+.card {
+  background-color: #ffffff;
+  padding-bottom: 20px;
+  border-radius: 12px; /* गोल किनारे */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* हल्का शैडो */
+  overflow: hidden;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* होवर पर थोड़ा ऊपर उठाता है */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. Image Styling */
+.card-image-wrapper {
+  height: 200px; /* इमेज की निश्चित ऊँचाई */
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.flavor-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* इमेज को स्ट्रेच किए बिना भरता है */
+  display: block;
+}
+
+/* 5. Text and Price Styling */
+.card h3 {
+  color: #333333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.card p {
+  color: #777777;
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding: 0 15px;
+}
+
+.price {
+  /* कीमत के लिए आकर्षक रंग (गुलाबी/लाल) */
+  color: #e91e63;
+  font-size: 20px;
+  font-weight: 700;
+  display: block;
+}
+
+/* 6. Responsive Adjustment (Small Screens) */
+@media (max-width: 600px) {
+  .menu-container {
+    /* मोबाइल पर एक-कॉलम लेआउट */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 1. Section Setup */
+.gallery-section {
+  background-color: darksalmon;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  color: #007bff;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* 2. Gallery Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 3. Individual Gallery Item Styling */
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+/* 4. Image Styling */
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover img {
+  opacity: 0.85;
+}
+
+/* 5. Responsive Adjustment (Small Screens) */
+@media (max-width: 650px) {
+  .gallery-grid {
+    /* मोबाइल पर 2 कॉलम रखें */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .gallery-item img {
+    height: 250px; /* मोबाइल पर थोड़ी कम ऊँचाई */
+  }
+}
+
+/* 1. Section Setup */
+.testimonials-section {
+  background-color: lavender;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  color: #007bff;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* 2. Testimonials Grid Layout */
+.testimonials-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 3. Individual Testimonial Card Styling */
+.testimonial-card {
+  flex: 1;
+  max-width: 350px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Quote Styling */
+.quote {
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 0;
+  margin-bottom: 20px;
+  /* उद्धरण को थोड़ा इटैलिक बनाने के लिए */
+  font-style: italic;
+}
+
+/* Author Styling */
+.author {
+  border-top: 1px solid #eeeeee;
+  padding-top: 15px;
+}
+
+.author-name {
+  /* नाम के लिए गहरा रंग */
+  color: #222222;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.author-title {
+  /* पदनाम के लिए हल्का रंग */
+  color: #888888;
+  font-size: 14px;
+  margin: 5px 0 0 0;
+}
+
+/* 4. Responsive Adjustment */
+@media (max-width: 900px) {
+  .testimonials-grid {
+    flex-direction: column; /* मोबाइल पर कॉलम में स्टैक करता है */
+    align-items: center;
+  }
+
+  .testimonial-card {
+    margin-bottom: 20px;
+    max-width: 90%;
+  }
+}
+
+/* 1. Section Setup */
+.contact-section {
+  background-color: mintcream;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  /* नीला रंग */
+  color: #007bff;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* 2. Form Layout */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 3. Input Field Styling (Text, Email, Textarea) */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s;
+}
+
+.contact-form textarea {
+  resize: vertical; /* केवल लंबवत रीसाइज़ की अनुमति देता है */
+  min-height: 150px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  /* फ़ोकस करने पर बॉर्डर का रंग बदलें */
+  border-color: #007bff;
+  outline: none;
+}
+
+/* 4. Submit Button Styling */
+.submit-button {
+  padding: 12px 25px;
+  /* बटन के लिए नीला रंग */
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* 5. Responsive Adjustment (Optional but Good Practice) */
+@media (max-width: 650px) {
+  .contact-form {
+    max-width: 95%; /* मोबाइल पर फ़ॉर्म की चौड़ाई बढ़ाता है */
+    padding: 20px;
+  }
+}
+
+/* 1. Footer Section Styling */
+footer {
+  background-color: purple;
+  padding: 25px 20px;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 2. Copyright Text */
+.copyright-text {
+  margin: 0;
+  font-weight: 300;
+}
+
+/* 3. Social Icons Styling */
+.socials a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  /* होवर पर हल्का आकर्षक रंग (जैसे हल्का गुलाबी) */
+  color: #ffc0cb;
+}
+
+/* 4. Responsive Adjustment */
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column; /* मोबाइल पर कॉलम में स्टैक करता है */
+    text-align: center;
+    gap: 15px;
+  }
+
+  .socials {
+    margin-top: 10px;
+  }
+
+  .socials a {
+    margin: 0 10px; /* आइकॉन्स के बीच की जगह */
+  }
+}
